@@ -1,0 +1,674 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Javier Hidalgo | Entrenamiento · Nutrición · Ciencias del Deporte</title>
+<meta name="description" content="Asesorías personalizadas de entrenamiento y nutrición en Santiago de Chile. Planes individualizados basados en evidencia científica.">
+<style>
+:root{--b:#0a0a0a;--s:#111;--s2:#1a1a1a;--g:#c9a227;--g2:#e8d5a3;--w:#f5f5f5;--m:#888;--bd:rgba(255,255,255,.08);--tr:.35s cubic-bezier(.16,1,.3,1)}
+*{box-sizing:border-box;margin:0;padding:0}html{scroll-behavior:smooth}
+body{background:var(--b);color:var(--w);font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Inter,sans-serif;line-height:1.6;overflow-x:hidden}
+img{max-width:100%;display:block}a{color:inherit;text-decoration:none}
+::selection{background:var(--g);color:var(--b)}
+::-webkit-scrollbar{width:4px}::-webkit-scrollbar-track{background:var(--b)}::-webkit-scrollbar-thumb{background:var(--g);border-radius:2px}
+
+/* Loader */
+#ld{position:fixed;inset:0;z-index:9999;background:var(--b);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:20px;transition:opacity .6s,visibility .6s}
+#ld.g{opacity:0;visibility:hidden;pointer-events:none}
+#ld .l{font-size:2rem;font-weight:900;letter-spacing:-2px}#ld .l span{color:var(--g)}
+#ld .b{width:160px;height:2px;background:rgba(255,255,255,.1);border-radius:2px;overflow:hidden}
+#ld .b i{display:block;height:100%;background:var(--g);width:0%;animation:lb 1.5s ease forwards}
+@keyframes lb{0%{width:0%}50%{width:70%}100%{width:100%}}
+#ld .n{font-size:.7rem;color:var(--m);letter-spacing:2px}
+
+/* Header */
+#hd{position:fixed;top:0;left:0;right:0;z-index:100;padding:0 24px;transition:background .4s,backdrop-filter .4s,border-color .4s;border-bottom:1px solid transparent}
+#hd.s{background:rgba(10,10,10,.95);backdrop-filter:blur(20px);border-color:var(--bd)}
+#hd .in{display:flex;align-items:center;justify-content:space-between;height:64px;max-width:1200px;margin:0 auto}
+#hd .lg{display:flex;align-items:center;gap:10px;font-weight:800;font-size:.95rem;letter-spacing:-.5px}
+#hd .lg i{width:36px;height:36px;background:var(--g);border-radius:8px;display:flex;align-items:center;justify-content:center;color:var(--b);font-style:normal;font-weight:900;font-size:1rem}
+#hd .lg small{display:block;font-size:.6rem;color:var(--m);letter-spacing:1px;text-transform:uppercase;font-weight:500}
+#hd nav{display:flex;align-items:center;gap:28px}
+#hd nav a{font-size:.78rem;color:var(--m);text-transform:uppercase;letter-spacing:1px;font-weight:500;transition:color .2s;position:relative;padding-bottom:2px}
+#hd nav a::after{content:'';position:absolute;bottom:-2px;left:0;width:0;height:1px;background:var(--g);transition:width .3s var(--tr)}
+#hd nav a:hover{color:var(--w)}#hd nav a:hover::after{width:100%}
+#hd .wa{background:var(--g);color:var(--b);padding:9px 18px;border-radius:8px;font-size:.75rem;font-weight:700;text-transform:uppercase;letter-spacing:1px;transition:transform .2s,box-shadow .2s}
+#hd .wa:hover{transform:translateY(-2px);box-shadow:0 8px 24px rgba(201,162,39,.25)}
+#hd .hm{display:none;flex-direction:column;gap:5px;padding:8px;background:none;border:none;cursor:pointer}
+#hd .hm span{display:block;width:22px;height:1.5px;background:var(--w);transition:.3s}
+
+/* Mobile nav */
+#mn{position:fixed;inset:0;z-index:99;background:rgba(10,10,10,.98);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;opacity:0;visibility:hidden;transition:opacity .4s,visibility .4s}
+#mn.o{opacity:1;visibility:visible}
+#mn a{font-size:1.6rem;font-weight:800;color:var(--w);padding:12px 24px;border-radius:8px;transition:color .2s,background .2s}
+#mn a:hover{color:var(--g);background:rgba(201,162,39,.08)}
+
+/* Hero */
+#he{position:relative;min-height:100vh;display:flex;align-items:center;padding:100px 24px 60px;overflow:hidden}
+#he::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 80% 50% at 70% 50%,rgba(201,162,39,.08),transparent);pointer-events:none}
+#he .in{position:relative;z-index:2;max-width:1200px;margin:0 auto;width:100%}
+#he .ey{display:flex;align-items:center;gap:12px;margin-bottom:24px;font-size:.7rem;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:var(--g)}
+#he .ey::before{content:'';width:30px;height:1px;background:var(--g)}
+#he h1{font-size:clamp(2.5rem,6vw,5rem);font-weight:900;line-height:1.05;letter-spacing:-3px;margin-bottom:24px;max-width:650px}
+#he h1 em{font-style:normal;color:var(--g);position:relative}
+#he h1 em::after{content:'';position:absolute;bottom:4px;left:0;width:100%;height:8px;background:rgba(201,162,39,.15);z-index:-1}
+#he p{color:var(--m);font-size:1.1rem;max-width:480px;line-height:1.7;margin-bottom:36px}
+#he .ac{display:flex;gap:14px;flex-wrap:wrap;margin-bottom:60px}
+#he .btn{display:inline-flex;align-items:center;gap:8px;padding:14px 28px;border-radius:10px;font-size:.85rem;font-weight:700;text-transform:uppercase;letter-spacing:1px;transition:transform .2s,box-shadow .2s}
+#he .btn:hover{transform:translateY(-3px)}
+#he .btn-pr{background:var(--g);color:var(--b);box-shadow:0 12px 32px rgba(201,162,39,.2)}
+#he .btn-gh{border:1px solid rgba(255,255,255,.15);color:var(--w)}
+#he .btn-gh:hover{border-color:var(--g);color:var(--g)}
+#he .st{display:flex;gap:10px;flex-wrap:wrap}
+#he .st span{display:flex;align-items:center;gap:8px;background:rgba(255,255,255,.03);border:1px solid var(--bd);border-radius:99px;padding:10px 18px;font-size:.75rem;color:var(--m)}
+#he .st span b{color:var(--g);font-weight:800;font-size:.9rem}
+
+/* Scroll indicator */
+#he .sc{position:absolute;bottom:30px;left:50%;transform:translateX(-50%);display:flex;flex-direction:column;align-items:center;gap:8px;opacity:.6}
+#he .sc span{font-size:.6rem;letter-spacing:2px;text-transform:uppercase;color:var(--m)}
+#he .sc i{width:20px;height:32px;border:1.5px solid rgba(255,255,255,.2);border-radius:10px;display:flex;justify-content:center;padding-top:6px}
+#he .sc i::after{content:'';width:3px;height:6px;background:var(--g);border-radius:2px;animation:sd 2s ease infinite}
+@keyframes sd{0%,100%{transform:translateY(0);opacity:1}50%{transform:translateY(6px);opacity:.3}}
+
+/* Marquee */
+.mw{background:var(--g);overflow:hidden;padding:10px 0}
+.mw .tr{display:flex;animation:mr 25s linear infinite;width:max-content}
+.mw .tr:hover{animation-play-state:paused}
+.mw span{display:inline-flex;align-items:center;gap:14px;padding:0 24px;font-size:.7rem;font-weight:800;letter-spacing:2px;text-transform:uppercase;color:var(--b);white-space:nowrap}
+.mw span::after{content:'';width:4px;height:4px;border-radius:50%;background:rgba(0,0,0,.3)}
+@keyframes mr{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+
+/* Sections */
+.sc{padding:100px 24px}
+.sc .in{max-width:1200px;margin:0 auto}
+.sc .hd{text-align:center;margin-bottom:60px}
+.sc .hd .tg{display:inline-flex;align-items:center;gap:6px;font-size:.7rem;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--g);border:1px solid rgba(201,162,39,.2);padding:5px 14px;border-radius:99px;margin-bottom:18px}
+.sc .hd .tg::before{content:'';width:4px;height:4px;border-radius:50%;background:var(--g)}
+.sc .hd h2{font-size:clamp(1.8rem,3.5vw,2.8rem);font-weight:900;line-height:1.1;letter-spacing:-1.5px;margin-bottom:16px}
+.sc .hd p{color:var(--m);font-size:1rem;max-width:520px;margin:0 auto;line-height:1.7}
+
+/* Numbers */
+#nu{padding:60px 24px;border-bottom:1px solid var(--bd)}
+#nu .gr{display:grid;grid-template-columns:repeat(4,1fr);gap:0;border:1px solid var(--bd);border-radius:16px;overflow:hidden}
+#nu .ce{padding:36px 20px;text-align:center;border-right:1px solid var(--bd);transition:background .3s;position:relative}
+#nu .ce:last-child{border-right:none}
+#nu .ce::after{content:'';position:absolute;bottom:0;left:0;right:0;height:2px;background:var(--g);transform:scaleX(0);transition:transform .5s var(--tr)}
+#nu .ce:hover{background:var(--s)}#nu .ce:hover::after{transform:scaleX(1)}
+#nu .ce .vl{font-size:clamp(2rem,3.5vw,2.8rem);font-weight:900;color:var(--g);line-height:1;margin-bottom:6px}
+#nu .ce .lb{font-size:.7rem;color:var(--m);letter-spacing:1.5px;text-transform:uppercase}
+
+/* Services */
+#sv .bn{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+#sv .ca{background:var(--s);border:1px solid var(--bd);border-radius:16px;padding:32px 28px;position:relative;transition:border-color .3s,transform .3s var(--tr)}
+#sv .ca:hover{border-color:rgba(201,162,39,.2);transform:translateY(-5px)}
+#sv .ca.f{grid-column:span 2;background:linear-gradient(135deg,#141200,#0d0c00);border-color:rgba(201,162,39,.12)}
+#sv .ca .ic{width:44px;height:44px;border-radius:10px;background:rgba(201,162,39,.08);display:flex;align-items:center;justify-content:center;margin-bottom:18px;font-size:1.3rem;transition:transform .3s}
+#sv .ca:hover .ic{transform:scale(1.1) rotate(-3deg)}
+#sv .ca h3{font-size:1.05rem;font-weight:700;margin-bottom:8px}
+#sv .ca p{font-size:.85rem;color:var(--m);line-height:1.6;margin-bottom:14px}
+#sv .ca .tg{display:flex;flex-wrap:wrap;gap:5px}
+#sv .ca .tg span{font-size:.65rem;font-weight:600;letter-spacing:.5px;text-transform:uppercase;padding:4px 10px;border-radius:99px;background:rgba(255,255,255,.04);border:1px solid var(--bd);color:#aaa}
+
+/* Who */
+#wh{background:var(--s)}
+#wh .sp{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center}
+#wh .im{position:relative}
+#wh .fr{border-radius:16px;overflow:hidden;border:1px solid rgba(201,162,39,.15);background:var(--s2);aspect-ratio:3/4;position:relative}
+#wh .fr img{width:100%;height:100%;object-fit:cover;filter:brightness(1.05)}
+#wh .fr::after{content:'';position:absolute;inset:0;background:linear-gradient(to bottom,transparent 50%,rgba(10,10,10,.7))}
+#wh .cd{position:absolute;background:rgba(17,17,17,.95);border:1px solid rgba(201,162,39,.15);border-radius:12px;padding:14px 18px}
+#wh .cd.c1{bottom:-12px;right:-12px}#wh .cd.c2{top:16px;left:-16px}
+#wh .cd .n{font-size:1.3rem;font-weight:900;color:var(--g);line-height:1}
+#wh .cd .l{font-size:.6rem;color:var(--m);letter-spacing:1px;text-transform:uppercase;margin-top:3px}
+#wh .tx p{color:var(--m);line-height:1.7;margin-bottom:16px;font-size:.95rem}
+#wh .vl{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin:24px 0}
+#wh .vl div{display:flex;align-items:center;gap:8px;padding:10px 14px;background:var(--s2);border:1px solid var(--bd);border-radius:8px;font-size:.82rem;color:#aaa;transition:border-color .2s,transform .2s}
+#wh .vl div:hover{border-color:rgba(201,162,39,.2);transform:translateX(3px)}
+#wh .cr{display:flex;flex-wrap:wrap;gap:6px}
+#wh .cr span{font-size:.65rem;font-weight:600;letter-spacing:1px;text-transform:uppercase;padding:4px 10px;border-radius:99px;background:rgba(201,162,39,.06);border:1px solid rgba(201,162,39,.15);color:rgba(201,162,39,.7)}
+
+/* Method */
+#mt .st{display:grid;grid-template-columns:repeat(4,1fr);gap:30px;position:relative}
+#mt .st::before{content:'';position:absolute;top:28px;left:10%;right:10%;height:1px;background:linear-gradient(90deg,transparent,rgba(201,162,39,.2),transparent)}
+#mt .st .st2{padding:0 10px;text-align:center;position:relative;z-index:1}
+#mt .st .st2 .nm{width:56px;height:56px;border-radius:50%;background:var(--b);border:2px solid rgba(201,162,39,.2);display:flex;align-items:center;justify-content:center;margin:0 auto 16px;font-size:1.1rem;font-weight:900;color:var(--g);transition:border-color .3s,background .3s}
+#mt .st .st2:hover .nm{background:rgba(201,162,39,.08);border-color:var(--g)}
+#mt .st .st2 h4{font-size:.9rem;font-weight:700;margin-bottom:6px}
+#mt .st .st2 p{font-size:.8rem;color:var(--m);line-height:1.55}
+
+/* Evaluation */
+#ev{background:var(--s)}
+#ev .sp{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:start}
+#ev .it{display:flex;flex-direction:column;gap:12px;margin:28px 0}
+#ev .rw{display:flex;gap:14px;padding:16px 18px;background:var(--s2);border:1px solid var(--bd);border-radius:12px;transition:border-color .25s,transform .25s}
+#ev .rw:hover{border-color:rgba(201,162,39,.2);transform:translateX(5px)}
+#ev .rw .ic{width:36px;height:36px;border-radius:8px;background:rgba(201,162,39,.06);display:flex;align-items:center;justify-content:center;font-size:1rem;flex-shrink:0}
+#ev .rw h4{font-size:.88rem;font-weight:700;margin-bottom:2px}
+#ev .rw p{font-size:.78rem;color:var(--m)}
+#ev .pn{background:var(--s2);border:1px solid rgba(201,162,39,.15);border-radius:16px;padding:28px}
+#ev .pn h3{font-size:.7rem;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--g);margin-bottom:20px}
+#ev .pn .rw2{display:flex;gap:12px;margin-bottom:16px}
+#ev .pn .rw2 .ic2{font-size:1.3rem;width:28px}
+#ev .pn .rw2 h4{font-size:.85rem;font-weight:700;margin-bottom:2px}
+#ev .pn .rw2 p{font-size:.78rem;color:var(--m)}
+#ev .gr2{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:20px}
+#ev .gr2 div{background:var(--b);border:1px solid var(--bd);border-radius:8px;padding:14px;text-align:center;transition:border-color .2s}
+#ev .gr2 div:hover{border-color:rgba(201,162,39,.2)}
+#ev .gr2 div .e{font-size:1.2rem;margin-bottom:3px}
+#ev .gr2 div span{font-size:.6rem;color:var(--m);letter-spacing:1px;text-transform:uppercase}
+#ev .wa{display:inline-flex;align-items:center;gap:8px;background:var(--g);color:var(--b);font-weight:700;font-size:.82rem;letter-spacing:1px;text-transform:uppercase;padding:14px 26px;border-radius:10px;transition:transform .2s,box-shadow .2s}
+#ev .wa:hover{transform:translateY(-2px);box-shadow:0 10px 28px rgba(201,162,39,.2)}
+
+/* Sports */
+#sp .gr{display:flex;flex-wrap:wrap;justify-content:center;gap:10px;margin-top:36px}
+#sp .ch{display:inline-flex;align-items:center;gap:8px;padding:10px 18px;border-radius:99px;background:var(--s);border:1px solid var(--bd);font-size:.82rem;font-weight:600;color:#aaa;transition:border-color .2s,background .2s,transform .2s}
+#sp .ch:hover{border-color:var(--g);background:rgba(201,162,39,.06);color:var(--w);transform:scale(1.05)}
+
+/* Plans */
+#pl .gr{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;align-items:start}
+#pl .pn{background:var(--s);border:1px solid var(--bd);border-radius:16px;padding:28px 22px;position:relative;transition:border-color .3s,transform .3s}
+#pl .pn:hover:not(.f){transform:translateY(-4px);border-color:rgba(201,162,39,.15)}
+#pl .pn.f{background:linear-gradient(160deg,#1a1700,#0f0d00);border-color:var(--g);transform:scale(1.02);box-shadow:0 0 50px rgba(201,162,39,.08)}
+#pl .pn .bd{position:absolute;top:-11px;left:50%;transform:translateX(-50%);background:var(--g);color:var(--b);font-size:.6rem;font-weight:800;letter-spacing:1px;text-transform:uppercase;padding:3px 12px;border-radius:99px}
+#pl .pn .nm{font-size:.72rem;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--m);margin-bottom:4px}
+#pl .pn .pr{font-size:2rem;font-weight:900;line-height:1;margin-bottom:4px}
+#pl .pn .nt{font-size:.75rem;color:var(--m);margin-bottom:18px}
+#pl .pn .dv{height:1px;background:var(--bd);margin:14px 0}
+#pl .pn ul{list-style:none;display:flex;flex-direction:column;gap:8px;margin-bottom:22px}
+#pl .pn ul li{display:flex;align-items:flex-start;gap:8px;font-size:.8rem;color:#bbb}
+#pl .pn ul li::before{content:'✓';color:var(--g);font-weight:800;flex-shrink:0}
+#pl .pn .bt{display:block;text-align:center;padding:12px;border-radius:8px;font-weight:700;font-size:.78rem;letter-spacing:1px;text-transform:uppercase;transition:all .2s}
+#pl .pn .bt.ol{border:1px solid rgba(255,255,255,.12);color:var(--w)}
+#pl .pn .bt.ol:hover{border-color:var(--g);color:var(--g)}
+#pl .pn .bt.sl{background:var(--g);color:var(--b)}
+#pl .pn .bt.sl:hover{background:#e8d5a3;transform:translateY(-2px)}
+
+/* Blog */
+#bl{background:var(--s)}
+#bl .gr{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-top:40px}
+#bl .ca{background:var(--s2);border:1px solid var(--bd);border-radius:16px;overflow:hidden;transition:border-color .3s,transform .3s,box-shadow .3s;cursor:pointer}
+#bl .ca:hover{border-color:rgba(201,162,39,.2);transform:translateY(-4px);box-shadow:0 20px 50px rgba(0,0,0,.4)}
+#bl .ca .im{height:180px;background:linear-gradient(135deg,#1a1a1a,#0f0f0f);display:flex;align-items:center;justify-content:center;font-size:3rem;position:relative;overflow:hidden}
+#bl .ca .im::after{content:'';position:absolute;inset:0;background:linear-gradient(to top,rgba(17,17,17,.8),transparent)}
+#bl .ca:hover .im::before{content:'';position:absolute;inset:0;background:rgba(201,162,39,.05)}
+#bl .ca .bd{padding:24px}
+#bl .ca .ct{font-size:.7rem;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:var(--g);margin-bottom:8px}
+#bl .ca h3{font-size:1.05rem;font-weight:800;line-height:1.3;margin-bottom:8px;transition:color .2s}
+#bl .ca:hover h3{color:var(--g)}
+#bl .ca p{font-size:.85rem;color:var(--m);line-height:1.6;margin-bottom:14px}
+#bl .ca .ft{display:flex;align-items:center;justify-content:space-between;font-size:.75rem;color:var(--m)}
+#bl .ca .ft span{display:flex;gap:6px}
+#bl .ca .ft span i{background:rgba(255,255,255,.05);padding:3px 10px;border-radius:99px;border:1px solid var(--bd);font-size:.65rem;text-transform:uppercase;letter-spacing:.5px}
+
+/* FAQ */
+#fq .sp{display:grid;grid-template-columns:1fr 1.5fr;gap:60px;align-items:start}
+#fq .ls{display:flex;flex-direction:column;gap:8px}
+#fq .it{background:var(--s);border:1px solid var(--bd);border-radius:12px;overflow:hidden;transition:border-color .25s}
+#fq .it.o{border-color:rgba(201,162,39,.2)}
+#fq .it button{width:100%;display:flex;align-items:center;justify-content:space-between;padding:16px 20px;text-align:left;font-size:.9rem;font-weight:600;color:var(--w);cursor:pointer;background:none;border:none}
+#fq .it button i{width:22px;height:22px;border-radius:50%;border:1px solid rgba(255,255,255,.12);display:flex;align-items:center;justify-content:center;flex-shrink:0;transition:all .3s;font-style:normal;font-size:.8rem}
+#fq .it.o button i{background:var(--g);border-color:var(--g);color:var(--b);transform:rotate(45deg)}
+#fq .it .bd{max-height:0;overflow:hidden;transition:max-height .4s var(--tr)}
+#fq .it .bd p{padding:0 20px 16px;font-size:.85rem;color:var(--m);line-height:1.7}
+
+/* Contact */
+#ct{background:var(--s)}
+#ct .sp{display:grid;grid-template-columns:1fr 1.3fr;gap:60px;align-items:start}
+#ct .ch{display:flex;flex-direction:column;gap:10px;margin-top:24px}
+#ct .ch a{display:flex;align-items:center;gap:14px;padding:14px 18px;background:var(--s2);border:1px solid var(--bd);border-radius:12px;transition:border-color .2s,transform .2s}
+#ct .ch a:hover{border-color:rgba(201,162,39,.2);transform:translateX(5px)}
+#ct .ch a .ic{width:36px;height:36px;border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:1rem;flex-shrink:0}
+#ct .ch a .ic.wa{background:#0d2218}#ct .ch a .ic.ig{background:#1a0b1a}#ct .ch a .ic.em{background:#0d1226}
+#ct .ch a .l{font-size:.6rem;color:var(--m);letter-spacing:1px;text-transform:uppercase}
+#ct .ch a .v{font-size:.85rem;font-weight:600}
+#ct .fm{background:var(--s2);border:1px solid var(--bd);border-radius:16px;padding:32px 28px}
+#ct .fm h3{font-size:1.1rem;font-weight:700;margin-bottom:20px}
+#ct .fm .rw{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+#ct .fm .fg{margin-bottom:14px}
+#ct .fm .fg label{display:block;font-size:.65rem;font-weight:600;letter-spacing:1px;text-transform:uppercase;color:var(--m);margin-bottom:6px}
+#ct .fm .fg input,#ct .fm .fg select,#ct .fm .fg textarea{width:100%;background:var(--b);border:1px solid var(--bd);border-radius:8px;padding:11px 14px;font-size:.85rem;color:var(--w);outline:none;transition:border-color .2s,box-shadow .2s}
+#ct .fm .fg input:focus,#ct .fm .fg select:focus,#ct .fm .fg textarea:focus{border-color:var(--g);box-shadow:0 0 0 3px rgba(201,162,39,.08)}
+#ct .fm .fg textarea{resize:vertical;min-height:90px}
+#ct .fm .sb{width:100%;display:flex;justify-content:center;align-items:center;gap:8px;background:var(--g);color:var(--b);font-weight:700;font-size:.85rem;letter-spacing:1px;text-transform:uppercase;padding:14px;border-radius:8px;border:none;cursor:pointer;transition:transform .2s,box-shadow .2s}
+#ct .fm .sb:hover{transform:translateY(-2px);box-shadow:0 8px 24px rgba(201,162,39,.2)}
+
+/* Footer */
+#ft{background:#060606;border-top:1px solid var(--bd);padding:50px 24px 20px}
+#ft .in{max-width:1200px;margin:0 auto}
+#ft .gr{display:grid;grid-template-columns:1.5fr 1fr 1fr 1fr;gap:40px;margin-bottom:36px}
+#ft .br p{font-size:.82rem;color:var(--m);line-height:1.7;margin:12px 0 16px}
+#ft .so{display:flex;gap:8px}
+#ft .so a{width:34px;height:34px;border-radius:8px;border:1px solid var(--bd);background:var(--s);display:flex;align-items:center;justify-content:center;font-size:.85rem;transition:border-color .2s,background .2s,transform .2s}
+#ft .so a:hover{border-color:var(--g);background:rgba(201,162,39,.06);transform:translateY(-2px)}
+#ft h4{font-size:.65rem;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--m);margin-bottom:14px}
+#ft ul{list-style:none;display:flex;flex-direction:column;gap:7px}
+#ft ul li a{font-size:.82rem;color:var(--m);transition:color .2s,padding-left .2s;display:inline-block}
+#ft ul li a:hover{color:var(--g);padding-left:3px}
+#ft .bt{display:flex;align-items:center;justify-content:space-between;padding-top:20px;border-top:1px solid var(--bd);flex-wrap:wrap;gap:10px}
+#ft .bt p{font-size:.72rem;color:var(--m)}
+
+/* WhatsApp float */
+.wf{position:fixed;bottom:24px;right:24px;z-index:90}
+.wf a{width:52px;height:52px;border-radius:50%;background:#25D366;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 16px rgba(37,211,102,.35);transition:transform .25s,box-shadow .25s;position:relative}
+.wf a:hover{transform:scale(1.1);box-shadow:0 6px 24px rgba(37,211,102,.5)}
+.wf a::before{content:'Asesoría';position:absolute;right:60px;background:var(--w);color:var(--b);font-size:.7rem;font-weight:700;padding:6px 12px;border-radius:8px;white-space:nowrap;opacity:0;transform:translateX(8px);transition:.25s;pointer-events:none}
+.wf a:hover::before{opacity:1;transform:translateX(0)}
+
+/* Reveal animation */
+[data-r]{opacity:0;transform:translateY(30px);transition:opacity .7s var(--tr),transform .7s var(--tr)}
+[data-r].v{opacity:1;transform:none}
+[data-d="1"]{transition-delay:.08s}[data-d="2"]{transition-delay:.16s}[data-d="3"]{transition-delay:.24s}[data-d="4"]{transition-delay:.32s}
+
+/* Responsive */
+@media(max-width:1024px){
+#sv .bn{grid-template-columns:repeat(2,1fr)}#sv .ca.f{grid-column:span 1}
+#pl .gr{grid-template-columns:repeat(2,1fr)}#pl .pn.f{transform:none}
+#mt .st{grid-template-columns:repeat(2,1fr);gap:30px}#mt .st::before{display:none}
+#bl .gr{grid-template-columns:repeat(2,1fr)}
+#ft .gr{grid-template-columns:1fr 1fr}
+}
+@media(max-width:768px){
+#hd nav,#hd .wa{display:none}#hd .hm{display:flex}
+#he h1{font-size:clamp(2rem,8vw,3rem)}
+#nu .gr{grid-template-columns:repeat(2,1fr)}
+#nu .ce:nth-child(2){border-right:none}
+#nu .ce:nth-child(1),#nu .ce:nth-child(2){border-bottom:1px solid var(--bd)}
+#sv .bn{grid-template-columns:1fr}
+#wh .sp,#ev .sp,#ct .sp,#fq .sp{grid-template-columns:1fr;gap:40px}
+#pl .gr{grid-template-columns:1fr}
+#bl .gr{grid-template-columns:1fr}
+#ft .gr{grid-template-columns:1fr;gap:24px}
+#ct .fm .rw{grid-template-columns:1fr}
+#he .st{gap:8px}
+}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+</style>
+</head>
+<body>
+
+<!-- Loader -->
+<div id="ld"><div class="l">JH<span>.</span></div><div class="b"><i></i></div><div class="n">Cargando experiencia...</div></div>
+
+<!-- Header -->
+<header id="hd">
+<div class="in">
+<a href="#" class="lg" onclick="window.scrollTo({top:0,behavior:'smooth'});return false">
+<i>JH</i><div>Javier Hidalgo<small>Entrenamiento · Nutrición · Ciencias</small></div>
+</a>
+<nav>
+<a href="#sv">Servicios</a>
+<a href="#ev">Evaluación</a>
+<a href="#mt">Metodología</a>
+<a href="#pl">Planes</a>
+<a href="#bl">Blog</a>
+<a href="#ct">Contacto</a>
+</nav>
+<a href="https://wa.me/56988252884?text=Hola%20Javier!%20Te%20escribo%20desde%20tu%20web%20y%20quiero%20saber%20m%C3%A1s%20sobre%20tus%20asesor%C3%ADas." class="wa" target="_blank" rel="noopener">Contactar</a>
+<button class="hm" onclick="document.getElementById('mn').classList.toggle('o')" aria-label="Menú"><span></span><span></span><span></span></button>
+</div>
+</header>
+
+<!-- Mobile Nav -->
+<div id="mn">
+<a href="#sv" onclick="document.getElementById('mn').classList.remove('o')">Servicios</a>
+<a href="#ev" onclick="document.getElementById('mn').classList.remove('o')">Evaluación</a>
+<a href="#mt" onclick="document.getElementById('mn').classList.remove('o')">Metodología</a>
+<a href="#pl" onclick="document.getElementById('mn').classList.remove('o')">Planes</a>
+<a href="#bl" onclick="document.getElementById('mn').classList.remove('o')">Blog</a>
+<a href="#ct" onclick="document.getElementById('mn').classList.remove('o')">Contacto</a>
+<a href="https://wa.me/56988252884" style="margin-top:16px;background:var(--g);color:var(--b);padding:12px 24px;border-radius:8px;font-size:.85rem;font-weight:700" target="_blank" rel="noopener">Contactar ahora</a>
+</div>
+
+<!-- Hero -->
+<section id="he">
+<div class="in">
+<div class="ey">Ciencia · Disciplina · Resultados</div>
+<h1>Entrena con <em>propósito.</em><br>Transforma tu vida.</h1>
+<p>Asesorías personalizadas de entrenamiento y nutrición basadas en evidencia científica. Sin atajos, sin programas genéricos — solo estrategias reales para tu cuerpo y tu vida.</p>
+<div class="ac">
+<a href="#ct" class="btn btn-pr">Agenda tu evaluación →</a>
+<a href="#sv" class="btn btn-gh">Ver servicios</a>
+</div>
+<div class="st">
+<span><b>150+</b> Clientes asesorados</span>
+<span><b>98%</b> Satisfacción</span>
+<span><b>USACH</b> Formación</span>
+<span><b>Online</b> Desde todo Chile</span>
+</div>
+</div>
+<div class="sc"><span>Scroll</span><i></i></div>
+</section>
+
+<!-- Marquee -->
+<div class="mw"><div class="tr" id="mr">
+<span>NUTRICIÓN PERSONALIZADA</span><span>ENTRENAMIENTO DE FUERZA</span><span>COACHING DE HÁBITOS</span><span>RENDIMIENTO DEPORTIVO</span><span>ASESORÍA ONLINE</span><span>EVALUACIÓN FÍSICA</span>
+<span>NUTRICIÓN PERSONALIZADA</span><span>ENTRENAMIENTO DE FUERZA</span><span>COACHING DE HÁBITOS</span><span>RENDIMIENTO DEPORTIVO</span><span>ASESORÍA ONLINE</span><span>EVALUACIÓN FÍSICA</span>
+</div></div>
+
+<!-- Numbers -->
+<section id="nu"><div class="in"><div class="gr">
+<div class="ce" data-r><div class="vl">150+</div><div class="lb">Clientes asesorados</div></div>
+<div class="ce" data-r data-d="2"><div class="vl">98%</div><div class="lb">Satisfacción</div></div>
+<div class="ce" data-r data-d="3"><div class="vl">500+</div><div class="lb">Horas de seguimiento</div></div>
+<div class="ce" data-r data-d="4"><div class="vl">100%</div><div class="lb">Basado en ciencia</div></div>
+</div></div></section>
+
+<!-- Services -->
+<section id="sv" class="sc"><div class="in">
+<div class="hd" data-r><span class="tg">Servicios</span><h2>Todo lo que necesitas<br>en un solo lugar</h2><p>Cada servicio trabaja en conjunto. Los mejores resultados ocurren cuando nutrición, entrenamiento y hábitos se alinean.</p></div>
+<div class="bn">
+<div class="ca f" data-r data-d="1"><div class="ic">🥩</div><h3>Nutrición Personalizada</h3><p>Plan alimentario diseñado para tus objetivos, preferencias y estilo de vida real. Educación profunda, no solo calorías.</p><div class="tg"><span>Evaluación inicial</span><span>Plan alimentario</span><span>Educación nutricional</span><span>Seguimiento</span></div></div>
+<div class="ca" data-r data-d="2"><div class="ic">💪</div><h3>Entrenamiento Personalizado</h3><p>Fuerza, hipertrofia, pérdida de grasa o rendimiento. Programa adaptado a tu nivel, equipo y tiempo disponible.</p><div class="tg"><span>Fuerza</span><span>Hipertrofia</span><span>Pérdida de grasa</span></div></div>
+<div class="ca" data-r data-d="3"><div class="ic">🧠</div><h3>Coaching de Hábitos</h3><p>Sueño, estrés, adherencia, organización. La base que hace que todo lo demás funcione a largo plazo.</p><div class="tg"><span>Sueño</span><span>Estrés</span><span>Adherencia</span></div></div>
+<div class="ca" data-r data-d="4"><div class="ic">🏆</div><h3>Rendimiento Deportivo</h3><p>Planificación específica para deportistas recreativos y competitivos. Potencia, velocidad, recuperación y prevención.</p><div class="tg"><span>Fútbol</span><span>Artes marciales</span><span>Armwrestling</span></div></div>
+<div class="ca" data-r data-d="5"><div class="ic">🌐</div><h3>Asesoría Online · Presencial</h3><p>Atención completa desde cualquier parte de Chile o en persona en La Pintana, Santiago. Videollamadas y WhatsApp directo.</p><div class="tg"><span>Todo Chile</span><span>Videollamadas</span><span>La Pintana</span></div></div>
+</div>
+</div></section>
+
+<!-- Who -->
+<section id="wh" class="sc"><div class="in">
+<div class="sp">
+<div class="im" data-r>
+<div class="fr">
+<img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 533'%3E%3Crect fill='%23111' width='400' height='533'/%3E%3Ctext x='50%25' y='50%25' dominant-baseline='middle' text-anchor='middle' fill='%23333' font-size='60' font-weight='900'%3EJH%3C/text%3E%3C/svg%3E" alt="Javier Hidalgo">
+</div>
+<div class="cd c1"><div class="n">USACH</div><div class="l">Terapia Act. Física y Salud</div></div>
+<div class="cd c2"><div class="n">Titulado</div><div class="l">Ciencias del Deporte</div></div>
+</div>
+<div class="tx" data-r>
+<span class="tg">Quién es Javier</span>
+<h2 style="font-size:clamp(1.8rem,3.5vw,2.8rem);font-weight:900;line-height:1.1;letter-spacing:-1.5px;margin-bottom:16px">Ciencia aplicada,<br>resultados reales</h2>
+<p>Estudiante de Terapia en Actividad Física y Salud de la Universidad de Santiago de Chile (USACH). Formación en ciencias del ejercicio, composición corporal, entrenamiento de fuerza y prevención de enfermedades crónicas.</p>
+<p>Suplementa Tu Vida Natural nació al ver que miles de personas fracasan con dietas extremas y programas genéricos. La misión: educación real, acompañamiento cercano, cambios que duran toda la vida.</p>
+<div class="vl">
+<div>🔬 Evidencia científica</div>
+<div>🎯 Planes individualizados</div>
+<div>📲 Seguimiento cercano</div>
+<div>🤝 Comunicación directa</div>
+<div>📚 Educación continua</div>
+<div>♻️ Resultados sostenibles</div>
+</div>
+<div class="cr">
+<span>Ciencias del Ejercicio</span>
+<span>Composición Corporal</span>
+<span>Nutrición Deportiva</span>
+<span>Entrenamiento de Fuerza</span>
+</div>
+</div>
+</div>
+</div></section>
+
+<!-- Method -->
+<section id="mt" class="sc"><div class="in">
+<div class="hd" data-r><span class="tg">Metodología</span><h2>Un proceso que genera<br>resultados reales</h2><p>Cada cliente pasa por un proceso estructurado y personalizado. Nada al azar, todo con propósito.</p></div>
+<div class="st">
+<div class="st2" data-r data-d="1"><div class="nm">01</div><h4>Evaluación inicial</h4><p>Composición corporal, historial de salud, hábitos y objetivos reales.</p></div>
+<div class="st2" data-r data-d="2"><div class="nm">02</div><h4>Diagnóstico</h4><p>Identificación de puntos fuertes y áreas clave para el progreso.</p></div>
+<div class="st2" data-r data-d="3"><div class="nm">03</div><h4>Diseño del plan</h4><p>Programa personalizado de entrenamiento, nutrición y hábitos.</p></div>
+<div class="st2" data-r data-d="4"><div class="nm">04</div><h4>Implementación</h4><p>Inicio con soporte activo para una transición sostenible.</p></div>
+<div class="st2" data-r data-d="1"><div class="nm">05</div><h4>Seguimiento semanal</h4><p>Revisión constante de adherencia, sensaciones y métricas.</p></div>
+<div class="st2" data-r data-d="2"><div class="nm">06</div><h4>Ajustes progresivos</h4><p>Modificaciones basadas en datos reales, no suposiciones.</p></div>
+<div class="st2" data-r data-d="3"><div class="nm">07</div><h4>Educación continua</h4><p>El "por qué" detrás de cada decisión para desarrollar autonomía.</p></div>
+<div class="st2" data-r data-d="4"><div class="nm">08</div><h4>Resultados sostenibles</h4><p>Cambios que permanecen porque están sobre bases sólidas.</p></div>
+</div>
+</div></section>
+
+<!-- Evaluation -->
+<section id="ev" class="sc"><div class="in">
+<div class="sp">
+<div data-r>
+<span class="tg">Evaluación Física</span>
+<h2 style="font-size:clamp(1.8rem,3.5vw,2.8rem);font-weight:900;line-height:1.1;letter-spacing:-1.5px;margin-bottom:16px">Conoce tu punto<br>de partida exacto</h2>
+<p style="color:var(--m);line-height:1.7;margin-bottom:20px;font-size:.95rem">Sin una evaluación real, cualquier plan es solo un intento. Medimos lo que importa.</p>
+<div class="it">
+<div class="rw"><div class="ic">⚖️</div><div><h4>Composición Corporal</h4><p>Masa muscular, grasa corporal y agua segmentada.</p></div></div>
+<div class="rw"><div class="ic">🧍</div><div><h4>Análisis Postural</h4><p>Postura, desbalances musculares y patrones de movimiento.</p></div></div>
+<div class="rw"><div class="ic">🏃</div><div><h4>Movilidad y Funcionalidad</h4><p>Rangos articulares y evaluación funcional completa.</p></div></div>
+<div class="rw"><div class="ic">💪</div><div><h4>Fuerza y Rendimiento</h4><p>Tests de fuerza muscular y capacidades físicas actuales.</p></div></div>
+</div>
+<a href="https://wa.me/56988252884?text=Hola%20Javier!%20Vi%20la%20secci%C3%B3n%20de%20evaluaci%C3%B3n%20y%20quiero%20agendar%20mi%20evaluaci%C3%B3n%20f%C3%ADsica%20inicial." class="wa" target="_blank" rel="noopener">Agenda tu evaluación ahora →</a>
+</div>
+<div data-r>
+<div class="pn">
+<h3>Métodos de Medición</h3>
+<div class="rw2"><div class="ic2">📊</div><div><h4>Bioimpedancia</h4><p>Análisis preciso de composición corporal segmentada.</p></div></div>
+<div class="rw2"><div class="ic2">📐</div><div><h4>Plicometría</h4><p>Medición de pliegues para estimación precisa de grasa.</p></div></div>
+<div class="rw2"><div class="ic2">📏</div><div><h4>Antropometría</h4><p>Mediciones corporales para seguimiento objetivo del progreso.</p></div></div>
+</div>
+<div class="gr2">
+<div><div class="e">🎯</div><span>Resultados Precisos</span></div>
+<div><div class="e">📋</div><span>Evaluación Completa</span></div>
+<div><div class="e">📈</div><span>Plan Personalizado</span></div>
+<div><div class="e">🔄</div><span>Seguimiento Continuo</span></div>
+</div>
+</div>
+</div>
+</div></section>
+
+<!-- Sports -->
+<section id="sp" class="sc"><div class="in" style="text-align:center">
+<div data-r><span class="tg">Deportes</span><h2 style="font-size:clamp(1.8rem,3.5vw,2.8rem);font-weight:900;line-height:1.1;letter-spacing:-1.5px;margin-bottom:16px">Para todo tipo de deportista</h2></div>
+<p style="color:var(--m);max-width:520px;margin:0 auto 36px" data-r data-d="2">Desde sedentarios absolutos hasta deportistas competitivos.</p>
+<div class="gr" data-r data-d="3">
+<div class="ch">⚽ Fútbol</div>
+<div class="ch">🥊 Artes Marciales</div>
+<div class="ch">🏋️ Gym / Culturismo</div>
+<div class="ch">💪 Armwrestling</div>
+<div class="ch">🏃 Running</div>
+<div class="ch">🚴 Ciclismo</div>
+<div class="ch">🏊 Natación</div>
+<div class="ch">🧘 Yoga / Pilates</div>
+<div class="ch">👴 Adulto Mayor</div>
+<div class="ch">🎓 Universitarios</div>
+<div class="ch">💼 Profesionales</div>
+<div class="ch">🌱 Principiantes</div>
+</div>
+</div></section>
+
+<!-- Plans -->
+<section id="pl" class="sc"><div class="in">
+<div class="hd" data-r><span class="tg">Planes</span><h2>Invierte en lo que<br>realmente importa</h2><p>Sin contratos eternos. Sin promesas vacías. El plan que se adapta a donde estás hoy.</p></div>
+<div class="gr">
+<div class="pn" data-r data-d="1">
+<div class="nm">Plan Inicial</div><div class="pr">Consultar</div><div class="nt">Evaluación + 1 mes</div>
+<div class="dv"></div>
+<ul>
+<li>Evaluación física completa</li>
+<li>Plan de entrenamiento</li>
+<li>Plan nutricional básico</li>
+<li>1 revisión mensual</li>
+</ul>
+<a href="https://wa.me/56988252884?text=Hola%20Javier!%20Me%20interesa%20el%20Plan%20Inicial." class="bt ol" target="_blank" rel="noopener">Consultar precio</a>
+</div>
+<div class="pn" data-r data-d="2">
+<div class="nm">Plan Mensual</div><div class="pr">Consultar</div><div class="nt">Por mes · Renovable</div>
+<div class="dv"></div>
+<ul>
+<li>Plan entrenamiento completo</li>
+<li>Plan nutricional personalizado</li>
+<li>Seguimiento semanal</li>
+<li>Ajustes mensuales</li>
+<li>Soporte WhatsApp</li>
+</ul>
+<a href="https://wa.me/56988252884?text=Hola%20Javier!%20Me%20interesa%20el%20Plan%20Mensual." class="bt ol" target="_blank" rel="noopener">Consultar precio</a>
+</div>
+<div class="pn f" data-r data-d="3">
+<div class="bd">⭐ Más recomendado</div>
+<div class="nm" style="color:var(--g)">Plan Trimestral</div><div class="pr">Consultar</div><div class="nt">3 meses · Mejor resultado</div>
+<div class="dv"></div>
+<ul>
+<li>Todo del plan mensual</li>
+<li>Evaluaciones trimestrales</li>
+<li>Coaching de hábitos incluido</li>
+<li>Ajustes quincenales</li>
+<li>Prioridad en respuestas</li>
+<li>Precio especial garantizado</li>
+</ul>
+<a href="https://wa.me/56988252884?text=Hola%20Javier!%20Me%20interesa%20el%20Plan%20Trimestral." class="bt sl" target="_blank" rel="noopener">Consultar precio</a>
+</div>
+<div class="pn" data-r data-d="4">
+<div class="nm">Plan Premium</div><div class="pr">Consultar</div><div class="nt">Experiencia total</div>
+<div class="dv"></div>
+<ul>
+<li>Todo del plan trimestral</li>
+<li>Videollamadas ilimitadas</li>
+<li>Acceso prioritario 24/7</li>
+<li>Plan de suplementación</li>
+<li>Análisis deportivo avanzado</li>
+</ul>
+<a href="https://wa.me/56988252884?text=Hola%20Javier!%20Me%20interesa%20el%20Plan%20Premium." class="bt ol" target="_blank" rel="noopener">Consultar precio</a>
+</div>
+</div>
+<p style="text-align:center;margin-top:24px;font-size:.75rem;color:var(--m)">Los precios se informan personalmente. Cupos limitados.</p>
+</div></section>
+
+<!-- Blog -->
+<section id="bl" class="sc"><div class="in">
+<div class="hd" data-r><span class="tg">Blog Científico</span><h2>Educación que<br>transforma</h2><p>Artículos basados en evidencia científica real con referencias verificables.</p></div>
+<div class="gr">
+<div class="ca" data-r data-d="1" onclick="alert('Artículo: Proteínas - Pronto disponible')">
+<div class="im">🥩</div>
+<div class="bd">
+<div class="ct">Nutrición</div>
+<h3>Proteínas: Cuánto, Cuándo y Cuáles</h3>
+<p>Meta-análisis actualizados sobre ingestión óptima de proteínas para hipertrofia y composición corporal.</p>
+<div class="ft"><span><i>Proteína</i><i>Hipertrofia</i></span>8 min</div>
+</div>
+</div>
+<div class="ca" data-r data-d="2" onclick="alert('Artículo: Fuerza - Pronto disponible')">
+<div class="im">💪</div>
+<div class="bd">
+<div class="ct">Entrenamiento</div>
+<h3>Periodización del Entrenamiento de Fuerza</h3>
+<p>Cómo estructurar tu progresión de cargas para resultados sostenibles sin estancamientos.</p>
+<div class="ft"><span><i>Fuerza</i><i>Periodización</i></span>12 min</div>
+</div>
+</div>
+<div class="ca" data-r data-d="3" onclick="alert('Artículo: Hábitos - Pronto disponible')">
+<div class="im">🧠</div>
+<div class="bd">
+<div class="ct">Coaching</div>
+<h3>Adherencia Nutricional: La Ciencia de la Constancia</h3>
+<p>Estrategias psicológicas y prácticas para mantener resultados a largo plazo sin restricciones extremas.</p>
+<div class="ft"><span><i>Hábitos</i><i>Adherencia</i></span>10 min</div>
+</div>
+</div>
+</div>
+</div></section>
+
+<!-- FAQ -->
+<section id="fq" class="sc"><div class="in">
+<div class="sp">
+<div data-r>
+<span class="tg">Preguntas Frecuentes</span>
+<h2 style="font-size:clamp(1.8rem,3.5vw,2.8rem);font-weight:900;line-height:1.1;letter-spacing:-1.5px;margin-bottom:16px">Resolvemos tus<br>dudas principales</h2>
+<p style="color:var(--m);line-height:1.7">Si no encuentras tu respuesta, contáctame directamente por WhatsApp.</p>
+</div>
+<div class="ls" data-r>
+<div class="it"><button onclick="this.parentElement.classList.toggle('o')">¿Las asesorías son solo presenciales? <i>+</i></button><div class="bd"><p>No. Atiendo clientes de todo Chile de forma online mediante videollamadas, seguimiento por WhatsApp y plataformas digitales. También hay opción presencial en La Pintana, Santiago.</p></div></div>
+<div class="it"><button onclick="this.parentElement.classList.toggle('o')">¿Necesito ir al gimnasio? <i>+</i></button><div class="bd"><p>Para nada. Diseño planes adaptados a tu realidad: gym, casa, parque, o incluso sin equipo. Lo importante es la consistencia, no el lugar.</p></div></div>
+<div class="it"><button onclick="this.parentElement.classList.toggle('o')">¿Cuánto tiempo hasta ver resultados? <i>+</i></button><div class="bd"><p>Los primeros cambios suelen notarse entre 2-4 semanas (energía, sueño, rendimiento). Cambios físicos visibles típicamente entre 8-12 semanas con adherencia consistente.</p></div></div>
+<div class="it"><button onclick="this.parentElement.classList.toggle('o')">¿Incluyen plan de suplementación? <i>+</i></button><div class="bd"><p>Los planes Premium incluyen análisis de suplementación basado en evidencia. En otros planes se evalúa caso por caso según necesidades reales.</p></div></div>
+<div class="it"><button onclick="this.parentElement.classList.toggle('o')">¿Qué pasa si no puedo seguir el plan al 100%? <i>+</i></button><div class="bd"><p>Es normal. El plan se ajusta a TU vida, no al revés. La flexibilidad y el ajuste continuo son parte de mi metodología.</p></div></div>
+</div>
+</div>
+</div></section>
+
+<!-- Contact -->
+<section id="ct" class="sc"><div class="in">
+<div class="sp">
+<div data-r>
+<span class="tg">Contacto</span>
+<h2 style="font-size:clamp(1.8rem,3.5vw,2.8rem);font-weight:900;line-height:1.1;letter-spacing:-1.5px;margin-bottom:16px">Empecemos tu<br>transformación</h2>
+<p style="color:var(--m);line-height:1.7;margin-bottom:20px">Completa el formulario o contáctame directamente. Respondo en menos de 24 horas.</p>
+<div class="ch">
+<a href="https://wa.me/56988252884" target="_blank" rel="noopener"><div class="ic wa">📱</div><div><div class="l">WhatsApp</div><div class="v">+56 9 8825 2884</div></div></a>
+<a href="https://instagram.com/suplementatuvidanatural" target="_blank" rel="noopener"><div class="ic ig">📷</div><div><div class="l">Instagram</div><div class="v">@suplementatuvidanatural</div></div></a>
+<a href="mailto:contacto@suplementatuvidanatural.cl"><div class="ic em">✉️</div><div><div class="l">Email</div><div class="v">contacto@suplementatuvidanatural.cl</div></div></a>
+</div>
+</div>
+<div data-r>
+<form class="fm" onsubmit="event.preventDefault();alert('¡Gracias! Te contactaré pronto.');this.reset()">
+<h3>Solicita tu asesoría</h3>
+<div class="rw">
+<div class="fg"><label>Nombre</label><input type="text" required placeholder="Tu nombre"></div>
+<div class="fg"><label>Email</label><input type="email" required placeholder="tu@email.com"></div>
+</div>
+<div class="fg"><label>Teléfono</label><input type="tel" placeholder="+56 9 0000 0000"></div>
+<div class="fg"><label>¿Qué te interesa?</label><select><option>Plan Inicial</option><option>Plan Mensual</option><option>Plan Trimestral</option><option>Plan Premium</option><option>Evaluación física</option><option>Otro</option></select></div>
+<div class="fg"><label>Mensaje</label><textarea placeholder="Cuéntame sobre tus objetivos..."></textarea></div>
+<button type="submit" class="sb">Enviar solicitud →</button>
+</form>
+</div>
+</div>
+</div></section>
+
+<!-- Footer -->
+<footer id="ft"><div class="in">
+<div class="gr">
+<div class="br">
+<div style="display:flex;align-items:center;gap:10px;font-weight:800;font-size:.95rem"><i style="width:34px;height:34px;background:var(--g);border-radius:8px;display:flex;align-items:center;justify-content:center;color:var(--b);font-style:normal">JH</i>Javier Hidalgo</div>
+<p>Asesorías personalizadas de entrenamiento y nutrición basadas en evidencia científica. Santiago de Chile, atención online en todo el país.</p>
+<div class="so">
+<a href="https://wa.me/56988252884" target="_blank" rel="noopener" title="WhatsApp">📱</a>
+<a href="https://instagram.com/suplementatuvidanatural" target="_blank" rel="noopener" title="Instagram">📷</a>
+<a href="mailto:contacto@suplementatuvidanatural.cl" title="Email">✉️</a>
+</div>
+</div>
+<div>
+<h4>Servicios</h4>
+<ul>
+<li><a href="#sv">Nutrición Personalizada</a></li>
+<li><a href="#sv">Entrenamiento</a></li>
+<li><a href="#sv">Coaching de Hábitos</a></li>
+<li><a href="#sv">Rendimiento Deportivo</a></li>
+</ul>
+</div>
+<div>
+<h4>Enlaces</h4>
+<ul>
+<li><a href="#ev">Evaluación Física</a></li>
+<li><a href="#mt">Metodología</a></li>
+<li><a href="#pl">Planes y Precios</a></li>
+<li><a href="#bl">Blog</a></li>
+</ul>
+</div>
+<div>
+<h4>Legal</h4>
+<ul>
+<li><a href="#">Política de Privacidad</a></li>
+<li><a href="#">Términos de Servicio</a></li>
+<li><a href="#">Política de Cookies</a></li>
+</ul>
+</div>
+</div>
+<div class="bt">
+<p>© 2024 Javier Hidalgo. Todos los derechos reservados.</p>
+<p style="font-size:.7rem;color:var(--m)">Hecho con ❤️ en Santiago, Chile</p>
+</div>
+</div></footer>
+
+<!-- WhatsApp Float -->
+<div class="wf"><a href="https://wa.me/56988252884?text=Hola%20Javier!%20Te%20escribo%20desde%20tu%20web." target="_blank" rel="noopener" aria-label="WhatsApp">💬</a></div>
+
+<script>
+// Loader
+window.addEventListener('load',()=>setTimeout(()=>document.getElementById('ld').classList.add('g'),400));
+
+// Header scroll
+const hd=document.getElementById('hd');
+window.addEventListener('scroll',()=>hd.classList.toggle('s',window.scrollY>50));
+
+// Reveal on scroll
+const obs=new IntersectionObserver((es)=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('v');obs.unobserve(e.target)}}),{threshold:.1});
+document.querySelectorAll('[data-r]').forEach(el=>obs.observe(el));
+
+// Smooth scroll for anchor links
+document.querySelectorAll('a[href^="#"]').forEach(a=>a.addEventListener('click',function(e){const t=document.querySelector(this.getAttribute('href'));if(t){e.preventDefault();t.scrollIntoView({behavior:'smooth',block:'start'})}}));
+
+// Close mobile nav on resize
+window.addEventListener('resize',()=>{if(window.innerWidth>768)document.getElementById('mn').classList.remove('o')});
+</script>
+</body>
+</html>
